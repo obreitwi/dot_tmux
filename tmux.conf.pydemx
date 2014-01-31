@@ -1,7 +1,7 @@
 #!!!
 #!!!# 
-# conf["filename"] = ".tmux.conf"
-# conf["folder"] = "$HOME"
+# cfg["filename"] = ".tmux.conf"
+# cfg["folder"] = "$HOME"
 #!!!
 
 # Last modified: Mon 02 Aug 2011 04:34:09 PM CEST
