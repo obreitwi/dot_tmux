@@ -1,0 +1,138 @@
+#!!!
+#!!!# 
+# conf["filename"] = ".tmux.conf"
+# conf["folder"] = "$HOME"
+#!!!
+
+# Last modified: Mon 02 Aug 2011 04:34:09 PM CEST
+
+# Change prefix key to Ctrl+a
+unbind C-b
+set -g prefix C-a
+
+# Last active window
+unbind l
+bind C-a last-window
+
+# Copy mode
+unbind [
+bind x copy-mode
+bind y paste-buffer
+# Use Vi mode
+setw -g mode-keys vi
+# Make mouse useful in copy mode
+# setw -g mode-mouse on
+
+set-option -g mouse-select-pane off
+set-option -g mouse-resize-pane off
+set-option -g mouse-select-window off
+set-option -g mode-mouse off
+
+bind m run-shell ~/git/usualStuff/tools/tmux-scripts/toggle-mouse-mode.sh
+
+# More straight forward key bindings for splitting
+unbind %
+bind | split-window -h
+#  bind h split-window -h
+unbind '"'
+bind _ split-window -v
+#  bind v split-window -v
+
+# console like window at bottom
+bind C split-window -v -p 15
+
+unbind n
+unbind p
+bind C-l next-window
+bind C-h previous-window
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+bind h select-pane -L
+bind J command-prompt "resize-pane -D %%"
+bind K command-prompt "resize-pane -U %%"
+bind H command-prompt "resize-pane -L %%"
+bind L command-prompt "resize-pane -R %%"
+
+# very handy:
+bind r source-file ~/.tmux.conf
+
+# resize panes like vim
+# feel free to change the "1" to however many lines you want to resize by, only
+# one at a time can be slow
+bind < resize-pane -L 5
+bind > resize-pane -R 5
+bind - resize-pane -D 5
+bind + resize-pane -U 5
+# for ease
+bind = resize-pane -U 5
+
+# History
+set -g history-limit 1000
+
+# Display utf8
+# set-window-option -g utf8
+
+# Pane
+unbind o
+# no longer working :(
+#  bind C-s down-pane
+bind C-s select-pane -R
+bind C-d select-pane -D
+bind -t vi-copy  C-q halfpage-up
+
+# Select window
+#  unbind .
+#  bind . choose-window
+unbind .
+bind . command-prompt "find-window '%%'"
+unbind \;
+bind \; command-prompt "move-window -t '%%'"
+bind '"' "choose-session"
+
+# Terminal emulator window title
+set -g set-titles on
+set -g set-titles-string '#S:#I.#P #W'
+
+# Status Bar
+set -g status-bg black
+set -g status-fg white
+set -g status-interval 1
+set -g status-right-length 60
+set -g status-left '#[fg=green]#H#[default]'
+set -g status-right '#[fg=yellow]#(w | tail -n +3 | wc -l) users #(cut -d " " -f 1-4 /proc/loadavg)#[default] #[fg=cyan,bold]%Y-%m-%d %H:%M:%S#[default]'
+
+# Notifying if other windows has activities
+setw -g monitor-activity on
+set -g visual-activity on
+
+# Highlighting the active window in status bar
+setw -g window-status-current-bg red
+
+# Clock
+setw -g clock-mode-colour green
+setw -g clock-mode-style 24
+
+# 256 colors
+# set -g default-terminal xterm-256color
+set -g default-terminal "screen-256color"
+
+# Set zsh to be the default shell
+set-option -g default-shell "/usr/bin/zsh"
+
+# yes yes, I know, STOP IT!
+# set-option -g mouse-select-pane on
+
+# Update display when attaching (hopefully)
+set-option -g update-environment "DISPLAY SSH_CLIENT SSH_AUTH_SOCK SSH_CONNECTION"
+
+# C-c: save into system clipboard (+). With preselection.
+bind C-c choose-buffer "run \"tmux save-buffer -b %% - | xclip -i -sel clipboard\" \; run \" tmux display \\\"Clipboard \(+\) filled with: $(tmux save-buffer -b %1 - | dd ibs=1 obs=1 status=noxfer count=80 2> /dev/null)... \\\" \" "
+# C-v: copy from + clipboard.
+bind C-v run "tmux set-buffer \"$(xclip -o -sel clipboard)\"; tmux paste-buffer" \; run "tmux display \"Copied from \(+\) $(xclip -o -sel clipboard | dd ibs=1 obs=1 status=noxfer count=80 2> /dev/null)... \""
+
+# source ~/git/usualStuff/tools/powerline/powerline/bindings/tmux/powerline.conf
+
+set -g history-limit 10000
+
+# vim: ft=conf
