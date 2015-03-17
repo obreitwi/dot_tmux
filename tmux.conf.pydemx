@@ -124,7 +124,11 @@ set-option -g default-shell "/usr/bin/zsh"
 # set-option -g mouse-select-pane on
 
 # Update display when attaching (hopefully)
+#!!! update-environment
 set-option -g update-environment "DISPLAY SSH_CLIENT SSH_AUTH_SOCK SSH_CONNECTION"
+#!!! update-environment @ propane.zqnr.de
+set-option -g update-environment "DISPLAY SSH_CLIENT SSH_AUTH_SOCK SSH_CONNECTION GPG_AGENT_INFO"
+#!!!
 
 # C-c: save into system clipboard (+). With preselection.
 bind C-c choose-buffer "run \"tmux save-buffer -b %% - | xclip -i -sel clipboard\" \; run \" tmux display \\\"Clipboard \(+\) filled with: $(tmux save-buffer -b %1 - | dd ibs=1 obs=1 status=noxfer count=80 2> /dev/null)... \\\" \" "
