@@ -27,8 +27,9 @@ set-option -g mouse-select-pane off
 set-option -g mouse-resize-pane off
 set-option -g mouse-select-window off
 set-option -g mode-mouse off
+set-option -g mouse off
 
-bind m run-shell ~/git/usualStuff/tools/tmux-scripts/toggle-mouse-mode.sh
+bind m run-shell tmux-toggle-mouse-mode
 
 # More straight forward key bindings for splitting
 unbind %
