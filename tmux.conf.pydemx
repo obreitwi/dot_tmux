@@ -116,7 +116,8 @@ setw -g clock-mode-style 24
 
 # 256 colors
 # set -g default-terminal xterm-256color
-set -g default-terminal "screen-256color"
+# set -g default-terminal "screen-256color"
+set -g default-terminal "tmux-256color"
 
 # Set zsh to be the default shell
 set-option -g default-shell "/usr/bin/zsh"
