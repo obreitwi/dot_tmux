@@ -131,7 +131,7 @@ set-option -g default-shell /home/hd/hd_hd/hd_au078/.local-spack/bin/zsh
 # Update display when attaching (hopefully)
 #!!! update-environment
 set-option -g update-environment "DISPLAY SSH_CLIENT SSH_AUTH_SOCK SSH_CONNECTION"
-#!!! update-environment @ propane.zqnr.de
+#!!! update-environment @ morwenna
 set-option -g update-environment "DISPLAY SSH_CLIENT SSH_AUTH_SOCK SSH_CONNECTION GPG_AGENT_INFO"
 #!!!
 
@@ -139,8 +139,6 @@ set-option -g update-environment "DISPLAY SSH_CLIENT SSH_AUTH_SOCK SSH_CONNECTIO
 bind C-c choose-buffer "run \"tmux save-buffer -b %% - | xclip -i -sel clipboard\" \; run \" tmux display \\\"Clipboard \(+\) filled with: $(tmux save-buffer -b %1 - | dd ibs=1 obs=1 status=noxfer count=80 2> /dev/null)... \\\" \" "
 # C-v: copy from + clipboard.
 bind C-v run "tmux set-buffer \"$(xclip -o -sel clipboard)\"; tmux paste-buffer" \; run "tmux display \"Copied from \(+\) $(xclip -o -sel clipboard | dd ibs=1 obs=1 status=noxfer count=80 2> /dev/null)... \""
-
-# source ~/git/usualStuff/tools/powerline/powerline/bindings/tmux/powerline.conf
 
 set -g history-limit 10000
 
