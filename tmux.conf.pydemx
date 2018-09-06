@@ -4,8 +4,6 @@
 # cfg["folder"] = "$HOME"
 #!!!
 
-# Last modified: Mon 02 Aug 2011 04:34:09 PM CEST
-
 # Change prefix key to Ctrl+a
 unbind C-b
 set -g prefix C-a
@@ -59,17 +57,15 @@ bind L command-prompt "resize-pane -R %%"
 bind r source-file ~/.tmux.conf
 
 # resize panes like vim
-# feel free to change the "1" to however many lines you want to resize by, only
-# one at a time can be slow
 bind < resize-pane -L 5
 bind > resize-pane -R 5
 bind - resize-pane -D 5
 bind + resize-pane -U 5
-# for ease
+# for ease (pressing shift is hard)
 bind = resize-pane -U 5
 
 # History
-set -g history-limit 1000
+set -g history-limit 10000
 
 # Display utf8
 # set-window-option -g utf8
@@ -121,12 +117,10 @@ set -g default-terminal "tmux-256color"
 
 #!!! shell
 # Set zsh to be the default shell
-set-option -g default-shell "/usr/bin/env" "zsh"
+set-option -g default-command "/usr/bin/env zsh"
 #!!! shell @ login1.nemo.privat,login2.nemo.privat
-set-option -g default-shell /home/hd/hd_hd/hd_au078/.local-spack/bin/zsh
+set-option -g default-command /home/hd/hd_hd/hd_au078/.local-spack/bin/zsh
 #!!!
-# yes yes, I know, STOP IT!
-# set-option -g mouse-select-pane on
 
 # Update display when attaching (hopefully)
 #!!! update-environment
@@ -139,8 +133,6 @@ set-option -g update-environment "DISPLAY SSH_CLIENT SSH_AUTH_SOCK SSH_CONNECTIO
 bind C-c choose-buffer "run \"tmux save-buffer -b %% - | xclip -i -sel clipboard\" \; run \" tmux display \\\"Clipboard \(+\) filled with: $(tmux save-buffer -b %1 - | dd ibs=1 obs=1 status=noxfer count=80 2> /dev/null)... \\\" \" "
 # C-v: copy from + clipboard.
 bind C-v run "tmux set-buffer \"$(xclip -o -sel clipboard)\"; tmux paste-buffer" \; run "tmux display \"Copied from \(+\) $(xclip -o -sel clipboard | dd ibs=1 obs=1 status=noxfer count=80 2> /dev/null)... \""
-
-set -g history-limit 10000
 
 set -g renumber-windows on
 
