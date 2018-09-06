@@ -2,13 +2,16 @@
 
 Make tmux behave more like screen.
 
-This is my personal tmux setup. Most notably it changes the modifier key from
-`<c-b>`  to `<c-a>` to make it more
+This is my personal tmux setup. Most notable changes:
+
+* Move modifier key from `<c-b>`  to `<c-a>` to make config more
 [screen](https://www.gnu.org/software/screen/manual/screen.html)-like.
+
+* Toggle mouse-mode via `<c-a>`+`m`.
 
 ## Install
 
 Requires [PyDEMX](https://github.com/obreitwi/pydemx).
 ```
-pydemx tmux.conf.pydemx
+PREFIX=<path in ${PATH}> ./install.sh
 ```

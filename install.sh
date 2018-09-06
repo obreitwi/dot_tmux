@@ -1,8 +1,11 @@
 #!/bin/bash
 
-SCRIPTDIR=$(cd $(dirname $0); pwd)
+SRCDIR="$(dirname "$(readlink -f "${0}")")"
 
-echo $SCRIPTDIR
+if [ -z "${PREFIX}" ]; then
+    PREFIX="${HOME}/.local/bin"
+fi
 
-ln -s -f -v $SCRIPTDIR/scripts/toggle-mouse-mode.sh ~/.local/bin/tmux-toggle-mouse-mode
+ln -s -f -v "${SRCDIR}/scripts/toggle-mouse-mode.sh" "${PREFIX}/tmux-toggle-mouse-mode"
+pydemx "${SRCDIR}/tmux.conf.pydemx"
 
