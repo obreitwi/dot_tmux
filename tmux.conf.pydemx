@@ -76,7 +76,11 @@ unbind o
 #  bind C-s down-pane
 bind C-s select-pane -R
 bind C-d select-pane -D
-bind -t vi-copy  C-q halfpage-up
+
+# old binding 
+bind -T vi-copy  C-q halfpage-up
+# new binding
+bind -Tcopy-mode-vi C-q send-keys -X halfpage-up
 
 # Select window
 #  unbind .
