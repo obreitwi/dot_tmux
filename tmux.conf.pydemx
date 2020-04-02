@@ -114,16 +114,20 @@ setw -g window-status-current-style bg=red
 setw -g clock-mode-colour green
 setw -g clock-mode-style 24
 
-# 256 colors
 # set -g default-terminal xterm-256color
 # set -g default-terminal "screen-256color"
+# 256 colors
+#!!! colors
 set -g default-terminal "tmux-256color"
+#!!! colors @ login1.nemo.privat,login2.nemo.privat
+set -g default-terminal "screen-256color"
+#!!!
 
 #!!! shell
 # Set zsh to be the default shell
 set-option -g default-command "/usr/bin/env zsh"
 #!!! shell @ login1.nemo.privat,login2.nemo.privat
-set-option -g default-command /home/hd/hd_hd/hd_au078/.local-spack/bin/zsh
+set-option -g default-command /usr/bin/bash
 #!!!
 
 # Update display when attaching (hopefully)
