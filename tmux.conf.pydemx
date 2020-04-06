@@ -21,13 +21,15 @@ setw -g mode-keys vi
 # Make mouse useful in copy mode
 # setw -g mode-mouse on
 
+#!!! Mouse
+set-option -g mouse off
+bind m run-shell tmux-toggle-mouse-mode
+
+#!!! Mouse @ legacy-hosts
 set-option -g mouse-select-pane off
 set-option -g mouse-resize-pane off
 set-option -g mouse-select-window off
-set-option -g mode-mouse off
-set-option -g mouse off
-
-bind m run-shell tmux-toggle-mouse-mode
+#!!!
 
 # More straight forward key bindings for splitting
 unbind %
@@ -77,10 +79,13 @@ unbind o
 bind C-s select-pane -R
 bind C-d select-pane -D
 
-# old binding 
-bind -T vi-copy  C-q halfpage-up
+#!!! halfpage_up
 # new binding
 bind -Tcopy-mode-vi C-q send-keys -X halfpage-up
+#!!! halfpage_up @ legacy-hosts
+# old binding
+bind -T vi-copy  C-q halfpage-up
+#!!!
 
 # Select window
 #  unbind .
