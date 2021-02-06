@@ -128,6 +128,9 @@ set -g default-terminal "tmux-256color"
 set -g default-terminal "screen-256color"
 #!!!
 
+# true color support
+set -ga terminal-overrides ",*256col*:Tc"
+
 #!!! shell
 # Set zsh to be the default shell
 set-option -g default-command "/usr/bin/env zsh"
