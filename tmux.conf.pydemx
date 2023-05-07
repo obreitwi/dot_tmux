@@ -65,7 +65,7 @@ bind H command-prompt "resize-pane -L %%"
 bind L command-prompt "resize-pane -R %%"
 
 # very handy:
-bind r source-file ~/.tmux.conf
+bind r source-file ~/.config/tmux/tmux.conf
 
 # resize panes like vim
 bind < resize-pane -L 5
