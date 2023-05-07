@@ -1,7 +1,16 @@
 #!!!
 #!!!# 
-# cfg["filename"] = ".tmux.conf"
-# cfg["folder"] = "$HOME"
+# cfg["filename"] = "tmux.conf"
+# cfg["folder"] = "$HOME/.config/tmux"
+#!!!
+
+#!!! Plugins
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'egel/tmux-gruvbox'
+set -g @tmux-gruvbox 'dark' # or 'light'
 #!!!
 
 # Change prefix key to Ctrl+a
@@ -67,7 +76,7 @@ bind + resize-pane -U 5
 bind = resize-pane -U 5
 
 # History
-set -g history-limit 10000
+set -g history-limit 50000
 
 # Display utf8
 # set-window-option -g utf8
@@ -103,7 +112,7 @@ set -g set-titles-string '#S:#I.#P #W'
 # Status Bar
 set -g status-style bg=black
 set -g status-style fg=white
-set -g status-interval 1
+set -g status-interval 5
 set -g status-right-length 60
 set -g status-left '#[fg=green]#H#[default]'
 set -g status-right '#[fg=yellow]#(w | tail -n +3 | wc -l) users #(cut -d " " -f 1-4 /proc/loadavg)#[default] #[fg=cyan,bold]%Y-%m-%d %H:%M:%S#[default]'
@@ -123,13 +132,15 @@ setw -g clock-mode-style 24
 # set -g default-terminal "screen-256color"
 # 256 colors
 #!!! colors
-set -g default-terminal "tmux-256color"
-#!!! colors @ login1.nemo.privat,login2.nemo.privat
+# set -g default-terminal "tmux-256color"
 set -g default-terminal "screen-256color"
+#!!! colors @ mimir
+set -g default-terminal "alacritty"
 #!!!
 
 # true color support
 set -ga terminal-overrides ",*256col*:Tc"
+set -ga terminal-overrides ",alacritty:Tc"
 
 #!!! shell
 # Set zsh to be the default shell
@@ -141,7 +152,7 @@ set-option -g default-command /usr/bin/bash
 # Update display when attaching (hopefully)
 #!!! update-environment
 set-option -g update-environment "DISPLAY SSH_CLIENT SSH_AUTH_SOCK SSH_CONNECTION"
-#!!! update-environment @ morwenna
+#!!! update-environment @ morwenna,mimir
 set-option -g update-environment "DISPLAY SSH_CLIENT SSH_AUTH_SOCK SSH_CONNECTION GPG_AGENT_INFO"
 #!!!
 
@@ -154,4 +165,7 @@ set -g renumber-windows on
 
 set -sg escape-time 10
 
+#!!! Plugins-Bottom
+run '/usr/share/tmux-plugin-manager/tpm'
+#!!!
 # vim: ft=conf
