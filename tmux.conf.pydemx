@@ -97,12 +97,13 @@ bind -T vi-copy  C-q halfpage-up
 #!!!
 
 # Select window
-#  unbind .
-#  bind . choose-window
 unbind .
-bind . command-prompt "find-window '%%'"
+bind . choose-window
+# unbind .
+# bind . command-prompt "find-window '%%'"
 unbind \;
 bind \; command-prompt "move-window -t '%%'"
+bind s command-prompt "rename-session '%%'"
 bind '"' "choose-session"
 
 # Terminal emulator window title
