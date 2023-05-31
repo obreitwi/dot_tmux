@@ -20,6 +20,7 @@ set -g prefix C-a
 # Last active window
 unbind l
 bind C-a last-window
+bind a send-prefix
 
 # Copy mode
 unbind [
