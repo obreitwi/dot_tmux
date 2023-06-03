@@ -31,7 +31,7 @@ setw -g mode-keys vi
 # Make mouse useful in copy mode
 # setw -g mode-mouse on
 
-#!!! Mouse
+#!!! Mouse @ disabled
 set-option -g mouse off
 bind m run-shell tmux-toggle-mouse-mode
 
@@ -166,6 +166,11 @@ set -g base-index 1
 set -g pane-base-index 1
 set-window-option -g pane-base-index 1
 set -g renumber-windows on
+
+bind m select-pane -m # mark
+bind M select-pane -M # unmark
+
+bind M-m join-pane
 
 set -sg escape-time 10
 
