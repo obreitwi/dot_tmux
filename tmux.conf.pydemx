@@ -103,9 +103,10 @@ bind . choose-window
 # unbind .
 # bind . command-prompt "find-window '%%'"
 unbind \;
-bind \; command-prompt "move-window -t '%%'"
+# bind \; command-prompt "move-window -t '%%'"
+# move window to back
+bind \; move-window -t 10
 bind '"' "choose-session"
-bind \; command-prompt "move-window -t '%%'"
 bind \# command-prompt -p "create new session" "new-session; rename-session '%%'"
 
 # Terminal emulator window title
