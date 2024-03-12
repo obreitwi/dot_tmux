@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 SRCDIR="$(dirname "$(readlink -f "${0}")")"
 
