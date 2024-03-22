@@ -179,6 +179,8 @@ set -sg escape-time 10
 
 #!!! Plugins-Bottom
 run '/usr/share/tmux-plugin-manager/tpm'
+#!!! Plugins-Bottom @ mimir
+source-file '~/.config/tmux/load-plugins'
 #!!! Plugins-Bottom @ nimir
 source-file '/etc/tmux/load-plugins'
 #!!!
