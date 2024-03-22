@@ -7,5 +7,7 @@ if [ -z "${PREFIX}" ]; then
 fi
 
 ln -s -f -v "${SRCDIR}/scripts/toggle-mouse-mode.sh" "${PREFIX}/tmux-toggle-mouse-mode"
-pydemx "${SRCDIR}/tmux.conf.pydemx"
+
+! [ -d "$HOME/.config/tmux" ] && mkdir -p "$HOME/.config/tmux"
+ln -sfv "${SRCDIR}/tmux.conf" "$HOME/.config/tmux"
 
