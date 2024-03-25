@@ -11,7 +11,6 @@ This is my personal tmux setup. Most notable changes:
 
 ## Install
 
-Requires [PyDEMX](https://github.com/obreitwi/pydemx).
 ```
 PREFIX=<path in ${PATH}> ./install.sh
 ```
